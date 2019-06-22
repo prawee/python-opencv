@@ -2,18 +2,19 @@
 import cv2, sys, numpy, os
 haar_file = 'haarcascade_frontalface_default.xml'
 datasets = 'datasets'  
-sub_data = 'Prawee'     
-path = os.path.join(datasets, sub_data)
+#folder_name = 'Prawee Wongsa'
+folder_name = 'Amarit Benchaamarit'
+path = os.path.join(datasets, folder_name.lower().replace(" ", "-"))
 if not os.path.isdir(path):
      os.mkdir(path)
-(width, height) = (130, 100)    
+(width, height) = (150, 150)
 
 
 face_cascade = cv2.CascadeClassifier(haar_file)
 webcam = cv2.VideoCapture(0)
 
 count = 1
-while count < 31: 
+while count <= 40:
     (_, im) = webcam.read()
     gray = cv2.cvtColor(im, cv2.COLOR_BGR2GRAY)
     faces = face_cascade.detectMultiScale(gray, 1.3, 4)
